@@ -1,10 +1,11 @@
 # Library imports
 import click
 from transformers import ViltProcessor, ViltForQuestionAnswering
-import requests
 from PIL import Image
 import warnings
+
 warnings.filterwarnings("ignore")
+
 
 def load_model():
     """
@@ -12,7 +13,7 @@ def load_model():
 
     Args:
         None
-    
+
     Returns:
         processor (ViltProcessor): Input processor for the model
         model (ViltForQuestionAnswering): Pretrained ViLT model
@@ -21,8 +22,12 @@ def load_model():
     # Load the model and input processor
     processor = ViltProcessor.from_pretrained("dandelin/vilt-b32-finetuned-vqa")
     model = ViltForQuestionAnswering.from_pretrained("dandelin/vilt-b32-finetuned-vqa")
-    
+
+    print(type(processor))
+    print(type(model))
+
     return processor, model
+
 
 def run_model(processor, model, image, text):
     """
@@ -33,7 +38,7 @@ def run_model(processor, model, image, text):
         model (ViltForQuestionAnswering): Pretrained ViLT model
         image (str): Path to input image for visual question answer
         text (str): question for the image
-    
+
     Returns:
         answer (str): Answer to the question
     """
@@ -50,13 +55,14 @@ def run_model(processor, model, image, text):
 
     return answer
 
+
 @click.command
 @click.option(
-    "--image", type=click.Path(exists=True), help="Path to input image for visual question answer"
+    "--image",
+    type=click.Path(exists=True),
+    help="Path to input image for visual question answer",
 )
-@click.option(
-    "--text", help="question for the image"
-)
+@click.option("--text", help="question for the image")
 def main(image, text):
     """
     This is the main driver function. It reads an input image and a text question
@@ -65,14 +71,14 @@ def main(image, text):
     Args:
         image (str): Path to input image for visual question answer
         text (str): question for the image
-    
+
     Returns:
         None
     """
     if image is None or text is None:
         print("[INFO] Please provide both image and text inputs")
         return
-    
+
     # Read the image
     input_image = Image.open(image)
 
@@ -85,5 +91,7 @@ def main(image, text):
     # Print the answer to the console
     click.echo(answer)
 
+
 if __name__ == "__main__":
+    # pylint: disable=no-value-for-parameter
     main()
