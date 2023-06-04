@@ -28,7 +28,6 @@ def test_load_model():
     [
         ("assets/test_img_1.jpg", "How many cats are there?", "2"),
         ("assets/test_img_2.jpg", "What is the animal doing?", "laying"),
-        # Add more test cases here
     ],
 )
 def test_main(image_path, text_input, expected_output):

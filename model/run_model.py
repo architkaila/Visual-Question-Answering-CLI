@@ -62,20 +62,20 @@ def run_model(processor, model, image, text):
     type=click.Path(exists=True),
     help="Path to input image for visual question answer",
 )
-@click.option("--text", help="question for the image")
-def main(image, text):
+@click.option("--question", help="question for the image")
+def main(image, question):
     """
     This is the main driver function. It reads an input image and a text question
     and runs the Vision-and-Language Transformer (ViLT) on the provided inputs.
 
     Args:
         image (str): Path to input image for visual question answer
-        text (str): question for the image
+        question (str): question for the image
 
     Returns:
         None
     """
-    if image is None or text is None:
+    if image is None or question is None:
         print("[INFO] Please provide both image and text inputs")
         return
 
@@ -86,7 +86,7 @@ def main(image, text):
     processor, model = load_model()
 
     # Run the model and get the answer
-    answer = run_model(processor, model, input_image, text)
+    answer = run_model(processor, model, input_image, question)
 
     # Print the answer to the console
     click.echo(answer)
