@@ -12,8 +12,8 @@ jobs:
       with:
         python-version: 3.9
         
-    - name: Install dependencies and environment setup
-      run: make install
+    - name: Install dependencies and environment setup for cli tool
+      run: make setup
       
     - name: Lint with Pylint
       run: make lint
