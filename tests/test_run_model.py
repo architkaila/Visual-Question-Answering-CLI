@@ -38,7 +38,7 @@ def test_main(image_path, text_input, expected_output):
     # Create a click testing runner
     runner = CliRunner()
     # Run the main function with the provided inputs
-    result = runner.invoke(main, ["--image", image_path, "--text", text_input])
+    result = runner.invoke(main, ["--image", image_path, "--question", text_input])
 
     # Check the output is as expected
     assert result.exit_code == 0
