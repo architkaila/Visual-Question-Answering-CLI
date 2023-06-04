@@ -39,15 +39,15 @@ make all
 
 &nbsp;  
 ## Running the Tool 🏃‍♂️
-The CLI tool has an entry point called `qanswer` which can be used to run the tool. The tool takes in two arguments: `--image_path` and `--question`. The `image_path` is the path to the image you want to use as input, and the `question` is the question you want to ask about the image.  
+The CLI tool has an entry point called `qanswer` which can be used to run the tool. The tool takes in two arguments: `--image` and `--question`. The `image` is the path to the image you want to use as input, and the `question` is the question you want to ask about the image.  
 
 **1. To run the tool, you can use the following command:**  
 ```
-qanswer --image_path <path_to_image> --question <question>
+qanswer --image <path_to_image> --question <question>
 ```
 **2. To run the tool with the default image and question:**  
 ```
-qanswer --image_path assets/test_img_2.jpg --question "what is the animal doing?"
+qanswer --image assets/test_img_2.jpg --question "what is the animal doing?"
 ```
 
 &nbsp;  

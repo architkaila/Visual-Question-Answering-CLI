@@ -23,9 +23,6 @@ def load_model():
     processor = ViltProcessor.from_pretrained("dandelin/vilt-b32-finetuned-vqa")
     model = ViltForQuestionAnswering.from_pretrained("dandelin/vilt-b32-finetuned-vqa")
 
-    print(type(processor))
-    print(type(model))
-
     return processor, model
 
 
